@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr">
-      <body className="min-h-screen bg-canvas text-ink antialiased">
+      <body className="min-h-screen bg-ivory text-ink antialiased">
         {children}
       </body>
     </html>

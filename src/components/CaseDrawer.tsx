@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { WorkCase } from "@/content/portfolio";
 import { assetUrl } from "@/lib/assetUrl";
+import { Plate } from "./ui/Heritage";
 
 interface CaseDrawerProps {
   activeCase: WorkCase | null;
@@ -79,28 +80,28 @@ export function CaseDrawer({
       {/* Backdrop */}
       <div
         onClick={onClose}
-        className="fixed inset-0 bg-[#0D1714]/72 backdrop-blur-xs transition-opacity"
+        className="fixed inset-0 bg-racing-3/75 backdrop-blur-xs transition-opacity"
       />
 
       {/* Slide-over panel */}
-      <div className="relative z-10 flex h-full w-full max-w-3xl flex-col overflow-y-auto border-l border-line bg-parchment text-ink shadow-[-24px_0_60px_rgba(13,23,20,0.45)] animate-[drawerSlideIn_320ms_cubic-bezier(0.22,1,0.36,1)]">
+      <div className="relative z-10 flex h-full w-full max-w-3xl flex-col overflow-y-auto border-l border-rule bg-ivory text-ink shadow-[-24px_0_60px_rgba(10,42,31,0.5)] animate-[drawerSlideIn_320ms_cubic-bezier(0.22,1,0.36,1)]">
         {/* Sticky top navigation */}
-        <div className="sticky top-0 z-20 flex flex-wrap items-center justify-between gap-3 border-b border-line bg-parchment/95 px-6 py-4 backdrop-blur-md">
+        <div className="sticky top-0 z-20 flex flex-wrap items-center justify-between gap-3 border-b border-rule bg-ivory/95 px-6 py-4 backdrop-blur-md">
           <div className="flex items-center gap-2">
-            <span className="rounded-md bg-cypress px-2.5 py-1 font-mono text-xs font-medium text-parchment">
-              {activeCase.num} / 0{allCases.length}
+            <span className="chamfer cut-xs bg-racing px-2.5 py-1 font-mono text-xs font-semibold text-energon">
+              {activeCase.num} // 0{allCases.length}
             </span>
             <button
               type="button"
               onClick={() => onSelectCase(prevCase)}
-              className="rounded-lg border border-line bg-stone/60 px-2.5 py-1 text-xs font-medium text-ink-soft transition-colors hover:border-cypress hover:text-ink"
+              className="chamfer cut-xs border border-rule bg-paper px-2.5 py-1 font-mono text-xs font-medium text-ink-soft transition-colors hover:border-racing hover:text-racing"
             >
               ← {prevLabel}
             </button>
             <button
               type="button"
               onClick={() => onSelectCase(nextCase)}
-              className="rounded-lg border border-line bg-stone/60 px-2.5 py-1 text-xs font-medium text-ink-soft transition-colors hover:border-cypress hover:text-ink"
+              className="chamfer cut-xs border border-rule bg-paper px-2.5 py-1 font-mono text-xs font-medium text-ink-soft transition-colors hover:border-racing hover:text-racing"
             >
               {nextLabel} →
             </button>
@@ -109,7 +110,7 @@ export function CaseDrawer({
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex items-center gap-1.5 rounded-xl border border-line bg-stone px-3.5 py-1.5 text-xs font-semibold text-ink transition-colors hover:border-cypress hover:bg-cypress hover:text-parchment"
+            className="chamfer cut-xs inline-flex items-center gap-1.5 border border-racing/30 bg-mint px-3.5 py-1.5 font-mono text-xs font-semibold text-racing transition-colors hover:bg-racing hover:text-ivory"
           >
             <span>{closeLabel}</span>
             <span aria-hidden="true">✕</span>
@@ -117,25 +118,25 @@ export function CaseDrawer({
         </div>
 
         {/* Real Screenshot Stage Header */}
-        <div className="bg-cypress p-6 text-parchment sm:p-8">
+        <div className="blueprint-dark bg-racing-3 p-6 text-ivory sm:p-8">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <span className="text-xs font-medium text-[#9EB5AC]">
+            <span className="font-mono text-xs uppercase tracking-wider text-mint-2/80">
               {activeCase.client} · {activeCase.year}
             </span>
-            <span className="rounded-full bg-[#27443B] px-3 py-1 font-mono text-[11px] text-[#9ED1BE]">
+            <span className="chamfer cut-xs border border-energon/30 bg-racing-2 px-3 py-1 font-mono text-[11px] text-energon">
               {activeCase.metricBadge}
             </span>
           </div>
 
           <h2
             id="case-drawer-title"
-            className="mt-2.5 text-2xl font-bold leading-snug tracking-[-0.025em] text-parchment sm:text-[1.75rem]"
+            className="mt-2.5 text-2xl font-bold leading-snug tracking-[-0.025em] text-ivory sm:text-[1.75rem]"
           >
             {activeCase.title}
           </h2>
 
           {/* Main featured real screenshot */}
-          <div className="mt-5 overflow-hidden rounded-2xl border border-cypress-border bg-[#0C1512]">
+          <Plate cut={14} edge="bg-energon/35" inner="bg-[#06150F]" className="mt-5">
             <button
               type="button"
               onClick={() => setLightboxSrc(assetUrl(activeShot.src))}
@@ -148,16 +149,16 @@ export function CaseDrawer({
                 className="aspect-[16/9] w-full object-cover object-top"
               />
             </button>
-            <div className="flex items-center justify-between gap-3 border-t border-white/10 bg-[#12201C] px-4 py-2.5 text-xs text-[#C6D8D0]">
+            <div className="flex items-center justify-between gap-3 border-t border-energon/15 bg-racing-3 px-4 py-2.5 text-xs text-mint">
               <span>{activeShot.caption}</span>
-              <span className="shrink-0 font-mono text-[11px] text-[#E39A74]">
-                {selectedScreen + 1}/{activeCase.screens.length}
+              <span className="shrink-0 font-mono text-[11px] text-energon">
+                0{selectedScreen + 1}/0{activeCase.screens.length}
               </span>
             </div>
-          </div>
+          </Plate>
 
           {/* All project screens grid */}
-          <p className="mt-4 font-mono text-[10.5px] uppercase tracking-wider text-[#92B0A4]">
+          <p className="mt-4 font-mono text-[10.5px] uppercase tracking-wider text-mint-2/75">
             {galleryTitle}
           </p>
           <div className="mt-2 grid grid-cols-4 gap-2.5 sm:grid-cols-5">
@@ -166,9 +167,9 @@ export function CaseDrawer({
                 key={scr.src}
                 type="button"
                 onClick={() => setSelectedScreen(idx)}
-                className={`overflow-hidden rounded-lg border transition-all ${
+                className={`chamfer cut-xs overflow-hidden border transition-all ${
                   idx === selectedScreen
-                    ? "border-[#E39A74] ring-2 ring-[#E39A74]/45"
+                    ? "border-energon ring-2 ring-energon/45"
                     : "border-white/15 opacity-65 hover:opacity-100"
                 }`}
               >
@@ -187,22 +188,25 @@ export function CaseDrawer({
         <div className="flex-1 space-y-8 p-6 sm:p-8">
           <div className="grid grid-cols-3 gap-3">
             {activeCase.outcomes.map((o) => (
-              <div
+              <Plate
                 key={o.label}
-                className="rounded-2xl border border-line bg-stone/65 p-4"
+                cut={10}
+                edge="bg-rule"
+                inner="bg-mint/45"
+                innerClassName="p-4"
               >
-                <p className="text-base font-bold tracking-tight text-cypress sm:text-lg">
+                <p className="text-base font-bold tracking-tight text-racing sm:text-lg">
                   {o.value}
                 </p>
                 <p className="mt-1 text-xs leading-snug text-ink-soft">
                   {o.label}
                 </p>
-              </div>
+              </Plate>
             ))}
           </div>
 
           <div>
-            <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-clay">
+            <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-brass">
               {activeCase.problemTitle}
             </h3>
             <p className="mt-2.5 text-[15px] leading-[1.75] text-ink-soft">
@@ -211,35 +215,39 @@ export function CaseDrawer({
           </div>
 
           <div>
-            <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-cypress">
+            <h3 className="font-mono text-xs font-semibold uppercase tracking-wider text-racing">
               {activeCase.stepsTitle}
             </h3>
             <ol className="mt-3.5 space-y-3">
               {activeCase.architectureSteps.map((step, i) => (
-                <li
-                  key={step}
-                  className="flex items-start gap-3.5 rounded-2xl border border-line/90 bg-stone/45 p-4"
-                >
-                  <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-cypress font-mono text-[11px] font-medium text-parchment">
-                    0{i + 1}
-                  </span>
-                  <span className="text-[14.5px] leading-[1.68] text-ink">
-                    {step}
-                  </span>
+                <li key={step}>
+                  <Plate
+                    cut={10}
+                    edge="bg-rule"
+                    inner="bg-paper"
+                    innerClassName="flex items-start gap-3.5 p-4"
+                  >
+                    <span className="chamfer cut-xs inline-flex h-6 w-7 shrink-0 items-center justify-center bg-racing font-mono text-[11px] font-semibold text-energon">
+                      0{i + 1}
+                    </span>
+                    <span className="text-[14.5px] leading-[1.68] text-ink">
+                      {step}
+                    </span>
+                  </Plate>
                 </li>
               ))}
             </ol>
           </div>
 
-          <div className="rounded-2xl border border-line bg-stone-deep/65 p-5">
-            <p className="font-mono text-[11.5px] text-ink-soft">
+          <Plate cut={14} edge="bg-racing/25" inner="bg-mint/55" innerClassName="p-5">
+            <p className="font-mono text-[11.5px] text-racing">
               {activeCase.stackLine}
             </p>
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <a
                 href="#contact"
                 onClick={onClose}
-                className="inline-flex items-center gap-2 rounded-xl bg-cypress px-5 py-2.5 text-sm font-semibold text-parchment transition-colors hover:bg-cypress-elevated"
+                className="btn-sweep chamfer cut-sm inline-flex items-center gap-2 bg-racing px-5 py-2.5 text-sm font-semibold text-ivory transition-colors hover:text-racing-3"
               >
                 <span>{discussCta} →</span>
               </a>
@@ -248,13 +256,13 @@ export function CaseDrawer({
                   href={activeCase.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-xl border border-cypress bg-parchment px-4 py-2.5 text-sm font-semibold text-cypress transition-colors hover:bg-cypress hover:text-parchment"
+                  className="chamfer cut-sm inline-flex items-center gap-1.5 border border-racing bg-ivory px-4 py-2.5 text-sm font-semibold text-racing transition-colors hover:bg-racing hover:text-ivory"
                 >
                   <span>{activeCase.liveLabel} ↗</span>
                 </a>
               )}
             </div>
-          </div>
+          </Plate>
         </div>
       </div>
 
@@ -268,7 +276,7 @@ export function CaseDrawer({
           <img
             src={lightboxSrc}
             alt={activeShot.caption}
-            className="max-h-[90vh] max-w-[94vw] rounded-xl border border-white/15 object-contain shadow-2xl"
+            className="max-h-[90vh] max-w-[94vw] border border-energon/35 object-contain shadow-2xl"
           />
         </div>
       )}

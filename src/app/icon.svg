@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="8" fill="#162621" />
-  <circle cx="10" cy="10" r="3" fill="#BC5F36" />
-  <path d="M10 23V15.5M10 19L16.5 14M13.2 16.5L17.5 23" stroke="#F2ECE1" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+  <polygon points="7,0 32,0 32,25 25,32 0,32 0,7" fill="#0F3B2C" />
+  <text x="16" y="22.5" text-anchor="middle" font-family="Georgia, serif" font-size="17" font-style="italic" fill="#FAFAF5">K</text>
+  <rect x="23" y="5" width="4" height="4" fill="#2EE38A" />
 </svg>

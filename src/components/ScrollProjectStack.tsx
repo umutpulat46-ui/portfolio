@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { WorkCase } from "@/content/portfolio";
 import { assetUrl } from "@/lib/assetUrl";
+import { Brackets, Plate, Tag } from "./ui/Heritage";
 
 interface ScrollProjectStackProps {
   cases: WorkCase[];
@@ -94,11 +95,18 @@ function ScrollAnimatedCard({
       style={{ top: `${88 + index * 22}px` }}
       className="lg:sticky"
     >
-      <article
-        ref={cardRef}
-        className="group rounded-3xl border border-cypress-border bg-cypress-elevated p-5 shadow-[0_-18px_48px_-20px_rgba(8,15,13,0.7)] transition-colors duration-300 will-change-transform hover:border-[#4D776A] sm:p-8 lg:p-9"
-      >
-        {children}
+      <article ref={cardRef} className="group will-change-transform">
+        <Plate
+          cut={22}
+          edge="bg-energon/30 group-hover:bg-energon/75"
+          inner="bg-racing"
+          innerClassName="p-5 shadow-[0_-20px_54px_-22px_rgba(4,14,10,0.8)] sm:p-8 lg:p-9"
+        >
+          <div className="pointer-events-none absolute inset-3">
+            <Brackets className="border-energon/25" size="h-3.5 w-3.5" />
+          </div>
+          {children}
+        </Plate>
       </article>
     </div>
   );
@@ -131,37 +139,37 @@ function ProjectCardContent({
   };
 
   return (
-    <div className="grid grid-cols-1 items-center gap-7 lg:grid-cols-12 lg:gap-9">
+    <div className="relative z-10 grid grid-cols-1 items-center gap-7 lg:grid-cols-12 lg:gap-9">
       {/* Left 5 columns: Authentic project narrative */}
       <div className="lg:col-span-5">
         <div className="flex flex-wrap items-center gap-2.5">
-          <span className="rounded-lg bg-cypress px-2.5 py-1 font-mono text-xs font-semibold text-[#E39A74]">
-            {item.num} / 0{total}
+          <span className="chamfer cut-xs bg-racing-3 px-2.5 py-1 font-mono text-xs font-semibold text-energon">
+            {item.num} // 0{total}
           </span>
-          <span className="rounded-full bg-[#29463D] px-3 py-1 font-mono text-[11px] font-medium text-[#9ED1BE]">
+          <span className="chamfer cut-xs border border-energon/25 bg-racing-2/80 px-3 py-1 font-mono text-[11px] font-medium text-mint">
             {item.metricBadge}
           </span>
         </div>
 
-        <p className="mt-3 text-[13px] font-medium text-[#9EB5AC]">
+        <p className="mt-3 font-mono text-[12px] uppercase tracking-wider text-mint-2/75">
           {item.client} · {item.year}
         </p>
 
         <h3
           onClick={() => onOpenCase(item, screenIdx)}
-          className="mt-2 cursor-pointer text-xl font-bold leading-snug tracking-[-0.025em] text-parchment transition-colors hover:text-[#E39A74] sm:text-[1.6rem]"
+          className="mt-2 cursor-pointer text-xl font-bold leading-snug tracking-[-0.025em] text-ivory transition-colors hover:text-energon sm:text-[1.6rem]"
         >
           {item.title}
         </h3>
 
-        <p className="mt-3.5 text-[14.5px] leading-[1.7] text-[#D2E0DA]">
+        <p className="mt-3.5 text-[14.5px] leading-[1.7] text-mint/90">
           {item.description}
         </p>
-        <p className="mt-2.5 text-[13.5px] leading-[1.68] text-[#9EB5AC]">
+        <p className="mt-2.5 text-[13.5px] leading-[1.68] text-mint-2/75">
           {item.detail}
         </p>
 
-        <p className="mt-5 border-t border-cypress-border pt-4 font-mono text-[11px] leading-relaxed text-[#8FB0A3]">
+        <p className="mt-5 border-t border-energon/15 pt-4 font-mono text-[11px] leading-relaxed text-mint-2/80">
           {item.stackLine}
         </p>
 
@@ -169,7 +177,7 @@ function ProjectCardContent({
           <button
             type="button"
             onClick={() => onOpenCase(item, screenIdx)}
-            className="inline-flex items-center gap-2 rounded-xl bg-clay px-4 py-2.5 text-xs font-semibold text-parchment transition-colors hover:bg-clay-hover"
+            className="chamfer cut-sm inline-flex items-center gap-2 bg-energon px-4 py-2.5 font-mono text-xs font-semibold uppercase tracking-wider text-racing-3 transition-transform hover:-translate-y-0.5"
           >
             <span>{inspectCta}</span>
             <span aria-hidden="true">→</span>
@@ -180,42 +188,47 @@ function ProjectCardContent({
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-[#497063] bg-cypress px-3.5 py-2.5 text-xs font-semibold text-[#DCE8E2] transition-colors hover:border-[#E39A74] hover:text-white"
+              className="chamfer cut-sm inline-flex items-center gap-1.5 border border-energon/35 bg-racing-3 px-3.5 py-2.5 font-mono text-xs font-semibold text-ivory transition-colors hover:border-energon hover:text-energon"
             >
               <span>{item.liveLabel}</span>
               <span aria-hidden="true">↗</span>
             </a>
           )}
-          <span className="font-mono text-[11px] text-[#9AB4A9]">
+          <Tag className="text-mint-2/70">
             {item.screens.length} {screensCountLabel}
-          </span>
+          </Tag>
         </div>
       </div>
 
       {/* Right 7 columns: Real Multi-Screen Project Showcase */}
       <div className="lg:col-span-7">
-        <div className="overflow-hidden rounded-2xl border border-cypress-border bg-[#0E1815] shadow-[0_20px_44px_-18px_rgba(0,0,0,0.65)]">
-          {/* Minimal browser chrome bar */}
-          <div className="flex items-center justify-between gap-3 border-b border-white/10 bg-[#13211D] px-4 py-2.5">
+        <Plate
+          cut={16}
+          edge="bg-energon/25"
+          inner="bg-[#071D15]"
+          className="shadow-[0_22px_48px_-18px_rgba(0,0,0,0.72)]"
+        >
+          {/* Machined HUD browser chrome bar */}
+          <div className="flex items-center justify-between gap-3 border-b border-energon/15 bg-racing-3 px-4 py-2.5">
             <div className="flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-              <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#E39A74]/80" />
+              <span className="h-2 w-2 bg-ivory/25" />
+              <span className="h-2 w-2 bg-brass/75" />
+              <span className="h-2 w-2 bg-energon" />
             </div>
 
-            <p className="truncate font-mono text-[11px] text-[#B8CCC3]">
+            <p className="truncate font-mono text-[11px] text-mint/85">
               {currentScreen.caption}
             </p>
 
-            <span className="shrink-0 font-mono text-[11px] text-[#8FB0A3]">
-              {screenIdx + 1}/{item.screens.length}
+            <span className="shrink-0 font-mono text-[11px] text-energon">
+              0{screenIdx + 1}/0{item.screens.length}
             </span>
           </div>
 
           {/* Real project screenshot */}
           <div
             onClick={() => onOpenCase(item, screenIdx)}
-            className="relative aspect-[16/9] w-full cursor-zoom-in overflow-hidden bg-[#0B1310]"
+            className="relative aspect-[16/9] w-full cursor-zoom-in overflow-hidden bg-[#06150F]"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -225,12 +238,12 @@ function ProjectCardContent({
               className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.015]"
             />
 
-            {/* Prev / Next arrows overlaid subtly */}
+            {/* Prev / Next arrows */}
             <button
               type="button"
               onClick={prevScreen}
               aria-label="Previous screenshot"
-              className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/55 text-white backdrop-blur-xs transition-colors hover:bg-clay"
+              className="chamfer cut-xs absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center border border-energon/35 bg-racing-3/85 text-ivory backdrop-blur-xs transition-colors hover:bg-energon hover:text-racing-3"
             >
               ‹
             </button>
@@ -238,14 +251,14 @@ function ProjectCardContent({
               type="button"
               onClick={nextScreen}
               aria-label="Next screenshot"
-              className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/55 text-white backdrop-blur-xs transition-colors hover:bg-clay"
+              className="chamfer cut-xs absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center border border-energon/35 bg-racing-3/85 text-ivory backdrop-blur-xs transition-colors hover:bg-energon hover:text-racing-3"
             >
               ›
             </button>
           </div>
 
           {/* Thumbnail selector strip */}
-          <div className="flex items-center gap-2 overflow-x-auto border-t border-white/10 bg-[#121F1B] p-2.5">
+          <div className="flex items-center gap-2 overflow-x-auto border-t border-energon/15 bg-racing-3/95 p-2.5">
             {item.screens.map((scr, idx) => {
               const active = idx === screenIdx;
               return (
@@ -254,10 +267,10 @@ function ProjectCardContent({
                   type="button"
                   onClick={() => setScreenIdx(idx)}
                   aria-label={scr.caption}
-                  className={`relative h-11 w-20 shrink-0 overflow-hidden rounded-lg border transition-all ${
+                  className={`chamfer cut-xs relative h-11 w-20 shrink-0 overflow-hidden border transition-all ${
                     active
-                      ? "border-[#E39A74] ring-2 ring-[#E39A74]/40"
-                      : "border-white/10 opacity-60 hover:opacity-100"
+                      ? "border-energon ring-2 ring-energon/40"
+                      : "border-white/15 opacity-60 hover:opacity-100"
                   }`}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -271,7 +284,7 @@ function ProjectCardContent({
               );
             })}
           </div>
-        </div>
+        </Plate>
       </div>
     </div>
   );
