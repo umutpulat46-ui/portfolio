@@ -209,7 +209,7 @@ export const SITE_CONTENT: Record<Locale, SiteContent> = {
           screens: [
             {
               src: "/projects/ravion-1.jpg",
-              caption: "Anahtar teslim kurumsal paketler (Foundation, Growth, Market Dominator)",
+              caption: "Ana giriş ekranı — Ravion Digital Media kurumsal açılış sayfası",
             },
             {
               src: "/projects/ravion-2.jpg",
@@ -577,7 +577,7 @@ export const SITE_CONTENT: Record<Locale, SiteContent> = {
           screens: [
             {
               src: "/projects/ravion-1.jpg",
-              caption: "Done-For-You agency packages (Foundation Setup, Growth Web Suite, Market Dominator)",
+              caption: "Hero landing page — Elevate your business in the digital world",
             },
             {
               src: "/projects/ravion-2.jpg",
