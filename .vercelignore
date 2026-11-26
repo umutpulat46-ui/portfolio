@@ -1,7 +1,10 @@
 node_modules
 .next
 .git
+out
 IMG_4626.HEIC
+/*.jpeg
+/*.jpg
 simpleofwork1
 simpleofwork2
 simpleofwork3

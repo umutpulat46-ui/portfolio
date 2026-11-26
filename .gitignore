@@ -28,6 +28,8 @@ next-env.d.ts
 
 # local raw media sources (processed web assets are in /public)
 /IMG_4626.HEIC
+/*.jpeg
+/*.jpg
 /simpleofwork1/
 /simpleofwork2/
 /simpleofwork3/
