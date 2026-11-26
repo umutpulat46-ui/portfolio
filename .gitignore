@@ -33,3 +33,4 @@ next-env.d.ts
 /simpleofwork3/
 *.mov
 *.HEIC
+.vercel
