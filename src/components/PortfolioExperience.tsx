@@ -492,7 +492,7 @@ export function PortfolioExperience() {
                   <div className="relative overflow-hidden rounded-3xl border border-cypress/20 bg-cypress shadow-[0_22px_46px_-18px_rgba(22,38,33,0.32)]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={assetUrl("/kenan-portrait.jpg")}
+                      src={assetUrl("/kenan-portrait-v2.jpg")}
                       alt="Kenan Umut Pulat"
                       width={900}
                       height={1200}
@@ -737,7 +737,7 @@ export function PortfolioExperience() {
                     <div className="relative shrink-0">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src={assetUrl("/kenan-portrait.jpg")}
+                        src={assetUrl("/kenan-portrait-v2.jpg")}
                         alt="Kenan Umut Pulat"
                         width={96}
                         height={96}

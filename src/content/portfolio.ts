@@ -208,7 +208,7 @@ export const SITE_CONTENT: Record<Locale, SiteContent> = {
           stackLine: "Next.js · Tailwind CSS · 100+ Sektörel Şablon · E-Ticaret Sepet · WhatsApp Hattı",
           screens: [
             {
-              src: "/projects/ravion-1.jpg",
+              src: "/projects/ravion-hero.jpg",
               caption: "Ana giriş ekranı — Ravion Digital Media kurumsal açılış sayfası",
             },
             {
@@ -576,7 +576,7 @@ export const SITE_CONTENT: Record<Locale, SiteContent> = {
           stackLine: "Next.js · Tailwind CSS · 100+ Industry Templates · Store Checkout · WhatsApp Flow",
           screens: [
             {
-              src: "/projects/ravion-1.jpg",
+              src: "/projects/ravion-hero.jpg",
               caption: "Hero landing page — Elevate your business in the digital world",
             },
             {
