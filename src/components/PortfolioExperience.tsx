@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { SITE_CONTENT, type Locale, type WorkCase } from "@/content/portfolio";
+import { assetUrl } from "@/lib/assetUrl";
 import { CaseDrawer } from "./CaseDrawer";
 import { HeroSplineScene } from "./HeroSplineScene";
 import { ScrollProjectStack } from "./ScrollProjectStack";
@@ -216,7 +217,7 @@ export function PortfolioExperience() {
 
             <div className="flex items-center gap-2">
               <a
-                href={t.cvHref}
+                href={assetUrl(t.cvHref)}
                 download
                 className="hidden items-center gap-1.5 rounded-xl border border-line bg-parchment px-3 py-1.5 font-mono text-[11px] font-medium text-ink transition-colors hover:border-cypress sm:inline-flex"
               >
@@ -310,7 +311,7 @@ export function PortfolioExperience() {
                 </a>
               ))}
               <a
-                href={t.cvHref}
+                href={assetUrl(t.cvHref)}
                 download
                 onClick={() => setMenuOpen(false)}
                 className="mt-2 inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-stone py-2.5 text-sm font-semibold text-cypress"
@@ -358,7 +359,7 @@ export function PortfolioExperience() {
                   <span>{t.hero.secondaryCta}</span>
                 </a>
                 <a
-                  href={t.cvHref}
+                  href={assetUrl(t.cvHref)}
                   download
                   className="inline-flex items-center gap-2 rounded-xl border border-line bg-stone-deep/65 px-4 py-3.5 text-[13.5px] font-semibold text-ink-soft transition-colors hover:border-clay hover:text-ink"
                 >
@@ -491,7 +492,7 @@ export function PortfolioExperience() {
                   <div className="relative overflow-hidden rounded-3xl border border-cypress/20 bg-cypress shadow-[0_22px_46px_-18px_rgba(22,38,33,0.32)]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="/kenan-portrait.jpg"
+                      src={assetUrl("/kenan-portrait.jpg")}
                       alt="Kenan Umut Pulat"
                       width={900}
                       height={1200}
@@ -736,7 +737,7 @@ export function PortfolioExperience() {
                     <div className="relative shrink-0">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src="/kenan-portrait.jpg"
+                        src={assetUrl("/kenan-portrait.jpg")}
                         alt="Kenan Umut Pulat"
                         width={96}
                         height={96}
@@ -798,7 +799,7 @@ export function PortfolioExperience() {
                       <ArrowUpRight className="h-3.5 w-3.5 text-[#93B3A6]" />
                     </a>
                     <a
-                      href={t.cvHref}
+                      href={assetUrl(t.cvHref)}
                       download
                       className="no-print inline-flex items-center gap-1.5 text-[#E39A74] hover:underline"
                     >

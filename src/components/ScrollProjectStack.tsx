@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { WorkCase } from "@/content/portfolio";
+import { assetUrl } from "@/lib/assetUrl";
 
 interface ScrollProjectStackProps {
   cases: WorkCase[];
@@ -218,7 +219,7 @@ function ProjectCardContent({
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={currentScreen.src}
+              src={assetUrl(currentScreen.src)}
               alt={currentScreen.caption}
               loading="lazy"
               className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.015]"
@@ -261,7 +262,7 @@ function ProjectCardContent({
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={scr.src}
+                    src={assetUrl(scr.src)}
                     alt=""
                     loading="lazy"
                     className="h-full w-full object-cover object-top"

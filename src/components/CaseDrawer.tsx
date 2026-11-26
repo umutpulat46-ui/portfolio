@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { WorkCase } from "@/content/portfolio";
+import { assetUrl } from "@/lib/assetUrl";
 
 interface CaseDrawerProps {
   activeCase: WorkCase | null;
@@ -137,12 +138,12 @@ export function CaseDrawer({
           <div className="mt-5 overflow-hidden rounded-2xl border border-cypress-border bg-[#0C1512]">
             <button
               type="button"
-              onClick={() => setLightboxSrc(activeShot.src)}
+              onClick={() => setLightboxSrc(assetUrl(activeShot.src))}
               className="block w-full cursor-zoom-in"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={activeShot.src}
+                src={assetUrl(activeShot.src)}
                 alt={activeShot.caption}
                 className="aspect-[16/9] w-full object-cover object-top"
               />
@@ -173,7 +174,7 @@ export function CaseDrawer({
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={scr.src}
+                  src={assetUrl(scr.src)}
                   alt={scr.caption}
                   className="aspect-[16/9] w-full object-cover object-top"
                 />
